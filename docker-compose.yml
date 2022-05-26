@@ -1,0 +1,20 @@
+# version: '3'
+# services:
+
+#   # db:
+#   #   image: mongo:latest
+
+#   backend:
+#     image: node:latest
+#     volumes:
+#       - ./backend:/backend
+#     ports:
+#       - 3000:3000
+#     command: bash -c "cd /backend && npm i && npm install -g npx && npx create-react-app profile && npm start"
+
+#   nginx:
+#     image: nginx
+#     volumes:
+#       - ./profile:/usr/share/nginx/html/
+#     ports:
+#       - 80:80
