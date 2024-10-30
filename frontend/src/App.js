@@ -3,8 +3,11 @@ import './App.css';
 import axios from 'axios'
 import List from './components/List';
 import withListLoading from './components/withListLoading';
+import Navbar from './components/Navbar';
+import Main from './components/Main';
 
 function App() {
+
   const ListLoading = withListLoading(List);
   const [appState, setAppState] = useState({
     loading: false,
@@ -21,22 +24,11 @@ function App() {
   }, [setAppState]);
 
   return (
-    <div className='App'>
-      <div className='container'>
-        <h1>My Repositories</h1>
-      </div>
-      <div className='repo-container'>
-        <ListLoading isLoading={appState.loading} repos={appState.repos} />
-      </div>
-      <footer>
-        <div className='footer'>
-          Built{' '}
-          <span role='img' aria-label='love'>
-            💚
-          </span>{' '}
-          with by Raziel Rodrigues
-        </div>
-      </footer>
+    <div>
+
+      <Navbar />
+      <Main />
+      {/* <ListLoading isLoading={appState.loading} repos={appState.repos} />  */}
     </div>
   );
 }
