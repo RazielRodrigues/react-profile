@@ -184,13 +184,10 @@ export default function Main() {
                     <div className="mt-12 text-center">
                         <a
                             href="#"
-                            className="inline-block px-12 py-3 text-sm font-medium text-white 
-                            
-                            whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-600 dark:text-purple-100
-                            
-                            transition hover:bg-purple-600 focus:outline-none focus:ring focus:ring-purple-600"
+                            className="inline-block px-12 py-3 text-sm font-medium text-white link underline "
                         >
                             Download Resume
+
                         </a>
                     </div>
                 </div>
