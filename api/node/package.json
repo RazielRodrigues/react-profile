@@ -4,7 +4,8 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "start": "node --watch --env-file=.env index.js ",
+    "test": "node --test"
   },
   "author": "Raziel Rodrigues",
   "license": "ISC"
