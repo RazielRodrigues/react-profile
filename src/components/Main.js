@@ -1,5 +1,32 @@
+import axios from 'axios'
+import List from './List';
+import withListLoading from './withListLoading';
+import React, { useEffect, useState } from 'react';
+
 export default function Main() {
-    return [
+
+    const ListLoading = withListLoading(List);
+    const [appState, setAppState] = useState({
+        loading: false,
+        repos: null,
+    });
+
+    useEffect(() => {
+        setAppState({ loading: true });
+        const apiUrl = 'https://api.github.com/users/RazielRodrigues/repos';
+        axios.get(apiUrl).then((repos) => {
+            const allRepos = repos.data;
+            setAppState({ loading: false, repos: allRepos });
+        });
+
+        const api2Url = 'http://localhost:8081/api';
+        axios.get(api2Url).then((data) => {
+            console.log(data)
+
+        });
+    }, [setAppState]);
+
+    return (
         <div >
 
             <section className="bg-gray-900 text-white">
@@ -19,13 +46,8 @@ export default function Main() {
                             href="#"
                         >
 
+                            <ListLoading isLoading={appState.loading} repos={appState.repos} />
 
-                            <h2 class="mt-4 text-xl font-bold text-white">Under construction...</h2>
-
-                            <p class="mt-1 text-sm text-gray-300">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci
-                                distinctio alias voluptatum blanditiis laudantium.
-                            </p>
                         </a>
 
 
@@ -194,5 +216,5 @@ export default function Main() {
             </section>
 
         </div>
-    ]
+    )
 }

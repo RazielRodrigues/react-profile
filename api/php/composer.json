@@ -1,0 +1,15 @@
+{
+    "name": "razielrodrigues/api",
+    "autoload": {
+        "psr-4": {
+            "Razielrodrigues\\Api\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Raziel Rodrigues",
+            "email": "razielx3@live.com"
+        }
+    ],
+    "require": {}
+}
