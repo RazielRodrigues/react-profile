@@ -1,31 +1,6 @@
-import axios from 'axios'
-import List from './List';
-import withListLoading from './withListLoading';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 export default function Main() {
-
-    const ListLoading = withListLoading(List);
-    const [appState, setAppState] = useState({
-        loading: false,
-        repos: null,
-    });
-
-    useEffect(() => {
-        setAppState({ loading: true });
-        const apiUrl = 'https://api.github.com/users/RazielRodrigues/repos';
-        axios.get(apiUrl).then((repos) => {
-            const allRepos = repos.data;
-            setAppState({ loading: false, repos: allRepos });
-        });
-
-        const api2Url = 'http://localhost:8081/api';
-        axios.get(api2Url).then((data) => {
-            console.log(data)
-
-        });
-    }, [setAppState]);
-
     return (
         <div >
 
