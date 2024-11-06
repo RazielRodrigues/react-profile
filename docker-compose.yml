@@ -1,17 +1,24 @@
 version: '3'
 services:
-
-  nginx:
-    image: nginx
+  go:
+    image: go:latest
     volumes:
-      - ./frontend/public:/usr/share/nginx/html/
+      - ./api/go:/api/go
     ports:
-      - 80:80
+      - 8081:8081
+    command: bash -c "cd /api/go && go run ./main.go"
 
   node:
     image: node:latest
     volumes:
-      - ./frontend:/frontend
+      - ./api/node:/api/node
     ports:
-      - 3000:3000
-    command: bash -c "cd /frontend && npm install && npm run start"
+      - 8082:8082
+    command: bash -c "cd /api/node && npm install && npm run start"
+
+  php:
+    image: php:latest
+    volumes:
+      - ./api/php:/api/php
+    ports:
+      - 8083:8083

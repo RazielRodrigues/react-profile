@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -9,25 +10,36 @@ import (
 
 func main() {
 
-	type User struct {
-		Id       int    `json:id`
-		Username string `json:username`
-		Data     string `json:data`
+	type Post struct {
+		Id    int    `json:"id"`
+		Title string `json:"title"`
+		Url   string `json:"url"`
 	}
 
-	user := User{
-		Id:       1,
-		Username: "Raziel Rodrigues",
-		Data:     "loading...",
+	resp, err := http.Get("https://dev.to/api/articles/?username=razielrodrigues")
+	if err != nil {
+		log.Fatalln(err)
 	}
 
-	userJson, _ := json.Marshal(user)
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	var posts []Post
+	apiResponse := string(body)
+	json.Unmarshal([]byte(apiResponse), &posts)
+
+	postsJson, err := json.Marshal(posts)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		io.WriteString(w, string(userJson))
+		io.WriteString(w, string(postsJson))
 	})
 
 	http.ListenAndServe(":8081", nil)
-	log.Fatal("Listening: localhost:8081", nil)
+	fmt.Println("Listening: https://localhost:8081", nil)
 }
