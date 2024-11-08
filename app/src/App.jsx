@@ -5,6 +5,9 @@ import Footer from './components/Footer';
 import Divider from './components/Divider';
 import Disclaimer from './components/Disclaimer';
 import Banner from './components/Banner';
+import Skills from './components/Skills';
+import Testimonial from './components/Testimonial';
+import ProjectsExample from './components/ProjectsExample';
 
 function App() {
   return (
@@ -12,9 +15,17 @@ function App() {
       <Navigation></Navigation>
       <Disclaimer></Disclaimer>
       <Banner></Banner>
-      <Projects></Projects>
+      <Divider></Divider>
+      <Skills></Skills>
+      <Divider></Divider>
       <Divider></Divider>
       <AboutMe></AboutMe>
+      <Divider></Divider>
+      <Projects></Projects>
+      <Divider></Divider>
+      <ProjectsExample></ProjectsExample>
+      <Divider></Divider>
+      <Testimonial></Testimonial>
       <Footer></Footer>
     </>
   )

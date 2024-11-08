@@ -12,7 +12,7 @@ export default function Navigation() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <button
+   {/*                      <button
                             className="inline-flex items-center justify-center gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-gray-900 transition hover:text-gray-700 focus:outline-none focus:ring dark:border-gray-800 dark:bg-gray-900 dark:text-white dark:hover:text-gray-200"
                             type="button"
                         >
@@ -32,7 +32,7 @@ export default function Navigation() {
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                                 />
                             </svg>
-                        </button>
+                        </button> */}
                         {/* 
                         <button
                             className="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
