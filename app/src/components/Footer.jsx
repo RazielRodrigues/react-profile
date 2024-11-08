@@ -1,7 +1,6 @@
 import photo from './../assets/razielrodrigues.jpeg'
 
 export default function Footer() {
-
     const year = new Date().getFullYear()
 
     return (
@@ -31,8 +30,6 @@ export default function Footer() {
                                 +351 967 634 861
                             </a>
                         </p>
-
-
 
                         <ul className="mt-8 flex gap-6">
 
