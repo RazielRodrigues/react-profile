@@ -13,7 +13,7 @@ export default function Article() {
       
       try {
 
-        const response = await axios.get('http://localhost:8081');
+        const response = await axios.get('http://localhost:8081/devto')
         const json = response.data;
 
         const items = json.map((item) => {

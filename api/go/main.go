@@ -8,8 +8,7 @@ import (
 	"net/http"
 )
 
-func main() {
-
+func DevToApi(w http.ResponseWriter, req *http.Request) {
 	type Post struct {
 		Id    int    `json:"id"`
 		Title string `json:"title"`
@@ -35,11 +34,53 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Content-Type", "application/json")
-		io.WriteString(w, string(postsJson))
-	})
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+	io.WriteString(w, string(postsJson))
+}
+
+func GithubToApi(w http.ResponseWriter, req *http.Request) {
+	type Repository struct {
+		Id               int    `json:"id"`
+		Name             string `json:"name"`
+		Description      string `json:"description"`
+		Html_url         string `json:"html_url"`
+		Fork             bool   `json:"fork"`
+		CreatedAt        string `json:"created_at"`
+		UpdateddAt       string `json:"updated_at"`
+		Homepage         string `json:"homepage"`
+		Language         string `json:"language"`
+		Stargazers_count int    `json:"stargazers_count"`
+	}
+
+	resp, err := http.Get("https://api.github.com/users/RazielRodrigues/repos")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	var repositories []Repository
+	apiResponse := string(body)
+	json.Unmarshal([]byte(apiResponse), &repositories)
+
+	repositoriesJson, err := json.Marshal(repositories)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+	io.WriteString(w, string(repositoriesJson))
+}
+
+func main() {
+
+	http.HandleFunc("/devto", DevToApi)
+	http.HandleFunc("/github", GithubToApi)
 
 	http.ListenAndServe(":8081", nil)
 	fmt.Println("Listening: https://localhost:8081", nil)

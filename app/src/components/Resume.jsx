@@ -76,6 +76,9 @@ export default function Resume() {
             </div>
 
             <div className="overflow-x-auto text-left">
+                <ul>
+
+
                 <table className="w-full min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                     <thead className="ltr:text-left rtl:text-right">
                         <tr>
@@ -92,7 +95,9 @@ export default function Resume() {
                             table
                         )}
                     </tbody>
-                </table>
+                    </table>
+                </ul>
+
             </div>
         </div>
     );

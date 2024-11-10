@@ -1,15 +1,76 @@
+import axios from 'axios';
+import { useEffect, useState } from "react"
+
 export default function ProjectsExampleTable() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null)
+    const [table, setTable] = useState([])
 
-    const resumes = [
-        { id: 1, name: 'CV EN', link: 'google.com' },
-        { id: 2, name: 'CV DE', link: 'google.com' }
-    ]
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleDateString(); // Formats the date to a human-readable format
+    };
 
-    const list = resumes.map(v =>
-        <li>
-            <a href={v.link} key={v.id} className="text-sm font-bold text-gray-900 sm:text-sm">Download Resume - {v.name}</a>
-        </li>
-    )
+    useEffect(() => {
+        async function loadData() {
+            setLoading(true);
+            setError(null)
+
+            try {
+
+                const response = await axios.get('http://localhost:8081/github')
+                const json = response.data;
+
+                const items = json.map((item) => {
+                    return (
+                        <tr key={item.id}>
+                            <td className="px-4 py-2 font-medium text-gray-900">{item.name}</td>
+                            <td className="px-4 py-2 text-gray-700">{item.description || 'No description'}</td>
+                            <td className="px-4 py-2 text-gray-500">{formatDate(item.created_at)}</td>
+                            <td className="px-4 py-2 text-gray-500">{formatDate(item.updated_at)}</td>
+                            <td className="px-4 py-2 text-gray-500">{item.language || 'N/A'}</td>
+                            <td className="px-4 py-2 text-gray-500">{item.stargazers_count}</td>
+                            <td className="px-4 py-2">
+                                {item.demo_url ? (
+                                    <a
+                                        href={item.demo_url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 hover:underline"
+                                    >
+                                        Live Demo
+                                    </a>
+                                ) : (
+                                    'No demo available'
+                                )}
+                            </td>
+                            <td className="px-4 py-2">
+                                <a
+                                    href={item.html_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:underline"
+                                >
+                                    Repository
+                                </a>
+                            </td>
+                        </tr>
+                    );
+                });
+
+
+                // Set the Table with mapped items
+                setTable(items);
+            } catch (error) {
+                console.error(error);
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadData()
+    }, [])
 
     return (
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -22,76 +83,30 @@ export default function ProjectsExampleTable() {
                 </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-                        
-
- <div className="mt-5 flex flex-wrap justify-center gap-4 mb-8">
-                    <ul>
-                        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                            <thead className="ltr:text-left rtl:text-right">
-                                <tr>
-                                    <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
-                                    <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Creation Date</th>
-                                    <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Status</th>
-                                    <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Link</th>
-                                </tr>
-                            </thead>
-
-                            <tbody className="divide-y divide-gray-200">
-                                <tr>
-                                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">PHP Encrypted API</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">01/01/1999</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">Only repository</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                        <a
-                                            href="#"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                            className="text-gray-700 transition hover:opacity-75"
-                                        >
-                                            google.com
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">PHP Encrypted API</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">01/01/1999</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">Online</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                        <a
-                                            href="#"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                            className="text-gray-700 transition hover:opacity-75"
-                                        >
-                                            google.com
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">PHP Encrypted API</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">01/01/1999</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">Deprecated</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                        <a
-                                            href="#"
-                                            rel="noreferrer"
-                                            target="_blank"
-                                            className="text-gray-700 transition hover:opacity-75"
-                                        >
-                                            google.com
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </ul>
-                </div>
-
-
+            <div className="overflow-x-auto text-left">
+                <table className="w-full min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                    <thead className="ltr:text-left rtl:text-right">
+                        <tr>
+                            <th className="px-4 py-2 font-medium text-gray-900">Name</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Description</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Created</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Updated</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Language</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Stars</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Live Demo</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Repository</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                        {error ? (
+                            <tr><td>Error: {error.message}</td></tr>
+                        ) : loading ? (
+                            <tr><td>Loading...</td></tr>
+                        ) : (
+                            table
+                        )}
+                    </tbody>
+                </table>
             </div>
         </div>
     )
