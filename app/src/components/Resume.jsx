@@ -1,53 +1,99 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 export default function Resume() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [table, setTable] = useState([]);
 
-    const resumes = [
-        { id: 1, name: 'CV EN', link: 'google.com' },
-        { id: 2, name: 'CV DE', link: 'google.com' }
-    ]
+    useEffect(() => {
+        async function loadData() {
+            setLoading(true);
+            setError(null); // Reset any previous errors
 
-    const list = resumes.map(v =>
-        <li>
-            <a href={v.link} key={v.id} className="text-sm font-bold text-gray-900 sm:text-sm">Download Resume - {v.name}</a>
-        </li>
-    )
+            try {
+                const response = await axios.get('http://localhost:8082');
+                const json = response.data;
+
+                const items = json.map((item, index) => {
+                    let type = '';
+
+                    // Assuming item represents the job object
+                    switch (index) { // Use index to determine type, assuming you're mapping based on this
+                        case 0:
+                            type = 'English';
+                            break;
+                        case 1:
+                            type = 'Deutsch';
+                            break;
+                        case 2:
+                            type = 'Portuguese';
+                            break;
+                        default:
+                            type = 'Unknown';
+                            break;
+                    }
+
+                    return (
+                        <tr key={item.job.id}>
+                            <td className="px-4 py-2 font-medium text-gray-900">Download Resume - {item.job.id} ({type})</td>
+                            <td className="px-4 py-2 text-gray-700">
+                                <a
+                                    href={item.job.urls[0]}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-sm font-bold text-gray-900 sm:text-sm"
+                                >
+                                    See more
+                                </a>
+                            </td>
+                        </tr >
+                    )
+                });
+
+                // Set the Table with mapped items
+                setTable(items);
+            } catch (error) {
+                console.error(error);
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadData();
+    }, []); // Add an empty dependency array to run this only once on mount
 
     return (
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
                 <div className="mx-auto max-w-3xl text-center">
                     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Resumes</h2>
-
                     <p className="mt-4 text-gray-500 sm:text-xl">
-                        The files comes from the CANVA API which is the platform I use to create my resumes
+                        The files come from the CANVA API, which is the platform I use to create my resumes.
                     </p>
                 </div>
             </div>
 
-            <div className="m-3">
-                <div>
-                    <span id="ProgressLabel" class="sr-only">Loading</span>
-
-                    <span
-                        role="progressbar"
-                        aria-labelledby="ProgressLabel"
-                        aria-valuenow="75"
-                        class="relative block rounded-full bg-gray-200"
-                    >
-                        <span class="absolute inset-0 flex items-center justify-center text-[10px]/4">
-                            <span class="font-bold text-white"> 75% </span>
-                        </span>
-
-                        <span class="block h-4 rounded-full bg-indigo-600 text-center" style={{ width: '75%' }}> </span>
-                    </span>
-                </div>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-                <ul>
-                    Loading...
-{/*                     {list}
- */}                </ul>
+            <div className="overflow-x-auto text-left">
+                <table className="w-full min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                    <thead className="ltr:text-left rtl:text-right">
+                        <tr>
+                            <th className="px-4 py-2 font-medium text-gray-900">Name</th>
+                            <th className="px-4 py-2 font-medium text-gray-900">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                        {error ? (
+                            <tr><td>Error: {error.message}</td></tr>
+                        ) : loading ? (
+                            <tr><td>Loading...</td></tr>
+                        ) : (
+                            table
+                        )}
+                    </tbody>
+                </table>
             </div>
         </div>
-    )
+    );
 }

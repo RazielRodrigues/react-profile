@@ -17,33 +17,13 @@ export default function ProjectsExampleTable() {
                 <div className="mx-auto max-w-3xl text-center">
                     <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">Projects</h2>
                     <p className="mt-4 text-gray-500 sm:text-xl">
-                        All the projects are update yto dat with my github profile
+                        All the projects are update to date with my github profile
                     </p>
                 </div>
             </div>
 
-            <div className="m-3">
-                <div>
-                    <span id="ProgressLabel" class="sr-only">Loading</span>
-
-                    <span
-                        role="progressbar"
-                        aria-labelledby="ProgressLabel"
-                        aria-valuenow="75"
-                        class="relative block rounded-full bg-gray-200"
-                    >
-                        <span class="absolute inset-0 flex items-center justify-center text-[10px]/4">
-                            <span class="font-bold text-white"> 75% </span>
-                        </span>
-
-                        <span class="block h-4 rounded-full bg-indigo-600 text-center" style={{ width: '75%' }}> </span>
-                    </span>
-                </div>
-            </div>
-
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-                Loading...
-                {/*                
+                        
 
  <div className="mt-5 flex flex-wrap justify-center gap-4 mb-8">
                     <ul>
@@ -111,7 +91,7 @@ export default function ProjectsExampleTable() {
                     </ul>
                 </div>
 
-*/}
+
             </div>
         </div>
     )

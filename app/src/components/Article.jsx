@@ -1,4 +1,53 @@
+import axios from 'axios';
+import { useEffect, useState } from "react"
+
 export default function Article() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null)
+  const [table, setTable] = useState([])
+
+  useEffect(() => {
+    async function loadData() {
+      setLoading(true);
+      setError(null)
+      
+      try {
+
+        const response = await axios.get('http://localhost:8081');
+        const json = response.data;
+
+        const items = json.map((item) => {
+          return (
+            <tr key={item.id}>
+              <td className="px-4 py-2 font-medium text-gray-900">{item.title}</td>
+              <td className="px-4 py-2 text-gray-700">
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm font-bold text-gray-900 sm:text-sm"
+                >
+                  See more
+                </a>
+              </td>
+            </tr >
+          )
+        })
+
+        // Set the Table with mapped items
+        setTable(items);
+      } catch (error) {
+        console.error(error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData()
+  }, [])
+
+
   return (
     <section>
       <div className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
@@ -7,9 +56,11 @@ export default function Article() {
             <h2 className="text-3xl font-bold sm:text-4xl">Read my articles</h2>
 
             <p className="mt-4 text-gray-600">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem quibusdam error soluta nihil esse dolor repellat, ea, est ab ipsum eaque porro dicta. Nihil ut eaque ad quis explicabo velit!
+              I love to share my knowledge with the community and my colleagues, one my ways to do it is writing articles
+              I like to post on dev.to this is the why I'm getting my articles there using an API please click the button
+              and take a look on last articles.
             </p>
-            
+
           </div>
 
           <div className="overflow-x-auto text-left">
@@ -20,70 +71,18 @@ export default function Article() {
                   <th className="px-4 py-2 font-medium text-gray-900">Link</th>
                 </tr>
               </thead>
-
               <tbody className="divide-y divide-gray-200">
-                {/* PHP */}
-                <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">PHP</td>
-                  <td className="px-4 py-2 text-gray-700">
-                    <a
-                      href="https://github.com/RazielRodrigues?tab=repositories&q=php&type=&language=&sort="
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm font-bold text-gray-900 sm:text-sm"
-                    >
-                      See more
-                    </a>
-                  </td>
-                </tr>
-
-                {/* JavaScript */}
-                <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">JavaScript</td>
-                  <td className="px-4 py-2 text-gray-700">
-                    <a
-                      href="https://github.com/RazielRodrigues?tab=repositories&q=js&type=&language=&sort="
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm font-bold text-gray-900 sm:text-sm"
-                    >
-                      See more
-                    </a>
-                  </td>
-                </tr>
-
-                {/* Go */}
-                <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Go</td>
-                  <td className="px-4 py-2 text-gray-700">
-                    <a
-                      href="https://github.com/RazielRodrigues?tab=repositories&q=go&type=&language=&sort="
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm font-bold text-gray-900 sm:text-sm"
-                    >
-                      See more
-                    </a>
-                  </td>
-                </tr>
-
-                {/* Others */}
-                <tr>
-                  <td className="px-4 py-2 font-medium text-gray-900">Others</td>
-                  <td className="px-4 py-2 text-gray-700">
-                    <a
-                      href="https://github.com/RazielRodrigues?tab=repositories"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-sm font-bold text-gray-900 sm:text-sm"
-                    >
-                      See more
-                    </a>
-                  </td>
-                </tr>
+                {error ? (
+                  <tr><td>Error: {error.message}</td></tr>
+                ) : loading ? (
+                  <tr><td>Loading...</td></tr>
+                ) : (
+                  table
+                )}
               </tbody>
             </table>
           </div>
+
         </div>
       </div>
     </section>

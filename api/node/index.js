@@ -36,7 +36,7 @@ const server = http.createServer({}, async (req, res) => {
     const resultLinks = []
 
     // 3.1 GIVING TIME FOR THE CANVA API WORKS (CACHE ID'S IN THE FUTURE?)
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 5000));
 
     for (const exportLink of resultExport) {
         const response = await fetch("https://api.canva.com/rest/v1/exports/" + exportLink.job.id, {
@@ -51,7 +51,10 @@ const server = http.createServer({}, async (req, res) => {
         resultLinks.push(link)
     }
 
-    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.writeHead(200, {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+    })
     res.end(JSON.stringify(resultLinks))
 })
 
