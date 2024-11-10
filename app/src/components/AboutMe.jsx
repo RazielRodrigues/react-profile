@@ -5,33 +5,18 @@ export default function AboutMe() {
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">About Me</h2>
 
                 <p className="mt-4 text-gray-500 sm:text-xl">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dolores laborum labore
-                    provident impedit esse recusandae facere libero harum sequi.
+                    I've been passionate about technology from a young age, inspired by my father, who was a programmer. This curiosity led me to study databases at FATEC Bauru, where I discovered my path in web development. Since then, I've dedicated myself to learning and improving daily, starting with my first opportunity working with PHP and web technologies.
+                </p>
+
+                <p className="mt-4 text-gray-500 sm:text-xl">
+                    I’m deeply grateful to the mentors who shaped my professional journey. As developers, we play a key role in today’s tech-driven world, so I approach every line of code with responsibility and a commitment to excellence, knowing the impact it has on users and customers.
                 </p>
             </div>
 
-            <dl className="mg-6 grid grid-cols-1 gap-4 divide-y divide-gray-100 sm:mt-8 sm:grid-cols-1 sm:divide-x sm:divide-y-0 lg:grid-cols-4" >
-                <div className="flex flex-col px-4 py-8 text-center">
-                    <dt className="order-last text-small font-medium text-gray-500">years of experience</dt>
-                    <dd className="text-small font-extrabold text-gray-600 md:text-5xl">+6</dd>
-                </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <h2 className="text-sm font-bold text-gray-900 sm:text-sm">See More</h2>
+            </div>
 
-                <div className="flex flex-col px-4 py-8 text-center">
-                    <dt className="order-last text-small font-medium text-gray-500">real world projects</dt>
-                    <dd className="text-small font-extrabold text-gray-600 md:text-5xl">+10</dd>
-                </div>
-
-                <div className="flex flex-col px-4 py-8 text-center">
-                    <dt className="order-last text-small font-medium text-gray-500">articles</dt>
-                    <dd className="text-small font-extrabold text-gray-600 md:text-5xl">+14</dd>
-                </div>
-
-                <div className="flex flex-col px-4 py-8 text-center">
-                    <dt className="order-last text-small font-medium text-gray-500">open source contributions</dt>
-                    <dd className="text-small font-extrabold text-gray-600 md:text-5xl">+22</dd>
-                </div>
-
-            </dl>
         </div>
     )
 }

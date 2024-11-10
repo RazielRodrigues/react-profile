@@ -15,16 +15,12 @@ function App() {
       <Navigation></Navigation>
       <Disclaimer></Disclaimer>
       <Banner></Banner>
-      <Divider></Divider>
       <Skills></Skills>
       <Divider></Divider>
-      <Divider></Divider>
       <AboutMe></AboutMe>
-      <Divider></Divider>
       <Projects></Projects>
       <Divider></Divider>
       <ProjectsExample></ProjectsExample>
-      <Divider></Divider>
       <Testimonial></Testimonial>
       <Footer></Footer>
     </>

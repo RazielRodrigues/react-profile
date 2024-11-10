@@ -4,25 +4,26 @@ export default function ProjectsExample() {
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">My Online Softwares</h2>
 
+                <p className="mt-4 text-gray-500 sm:text-xl">
+                    I would like to invite you to take a look to a few projects of mine, I made this
+                    to showcase my code because inthe end, this is the pourpouse of my job right?
+                </p>
+
             </div>
 
             <div className="overflow-x-auto mt-5 text-left">
-                <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+
+                <div className="mt-8 flex flex-wrap justify-center gap-4">
+                    <h2 className="text-sm font-bold text-gray-900 sm:text-sm">See More</h2>
+                </div>
+
+{/*                 <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                     <thead className="ltr:text-left rtl:text-right">
                         <tr>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Creation Date</th>
                             <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Status</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                <a
-                                    href="#"
-                                    rel="noreferrer"
-                                    target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
-                                >
-                                    Devto
-                                </a>
-                            </th>
+                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Link</th>
                         </tr>
                     </thead>
 
@@ -75,7 +76,7 @@ export default function ProjectsExample() {
                             </td>
                         </tr>
                     </tbody>
-                </table>
+                </table> */}
             </div>
         </div>
     )
