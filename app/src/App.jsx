@@ -1,28 +1,24 @@
 import Navigation from './components/Navigation';
-import Projects from './components/Projects';
-import AboutMe from './components/AboutMe';
 import Footer from './components/Footer';
-import Divider from './components/Divider';
-import Disclaimer from './components/Disclaimer';
-import Banner from './components/Banner';
-import Skills from './components/Skills';
-import Testimonial from './components/Testimonial';
-import ProjectsExample from './components/ProjectsExample';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Resume from './components/Resume';
+import Home from './components/Home';
+import ProjectsExampleTable from './components/ProjectsExampleTable';
 
 function App() {
   return (
     <>
-      <Navigation></Navigation>
-      <Disclaimer></Disclaimer>
-      <Banner></Banner>
-      <Skills></Skills>
-      <Divider></Divider>
-      <AboutMe></AboutMe>
-      <Projects></Projects>
-      <Divider></Divider>
-      <ProjectsExample></ProjectsExample>
-      <Testimonial></Testimonial>
-      <Footer></Footer>
+      <BrowserRouter>
+        <Navigation></Navigation>
+
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/resume' element={<Resume />} />
+          <Route path='/project' element={<ProjectsExampleTable />} />
+        </Routes>
+
+        <Footer></Footer>
+      </BrowserRouter>
     </>
   )
 }

@@ -14,9 +14,8 @@ export default function AboutMe() {
             </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <h2 className="text-sm font-bold text-gray-900 sm:text-sm">See More</h2>
+                <h2 className="text-sm font-bold text-gray-900 sm:text-sm">See more</h2>
             </div>
-
         </div>
     )
 }

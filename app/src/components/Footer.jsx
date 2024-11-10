@@ -4,7 +4,7 @@ export default function Footer() {
     const year = new Date().getFullYear()
 
     return (
-        <footer className="bg-white lg:grid lg:grid-cols-5">
+        <footer className="bg-white lg:grid lg:grid-cols-5 mt-10">
             <div className="relative block h-32 lg:col-span-2 lg:h-full">
                 <img
                     src={photo}

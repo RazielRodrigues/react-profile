@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Banner() {
     return (
         <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -10,7 +12,7 @@ export default function Banner() {
             </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-                <h2 className="text-sm font-bold text-gray-900 sm:text-sm">Download Resume</h2>
+                <Link to="/resume" className="text-sm font-bold text-gray-900 sm:text-sm">Download Resume</Link>
             </div>
         </div>
     )
