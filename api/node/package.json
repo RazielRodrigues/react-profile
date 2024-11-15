@@ -4,8 +4,8 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "start": "node --env-file=.env index.js ",
-    "watch": "node --watch --env-file=.env index.js ",
+    "start": "node --env-file=.env ./api/index.js ",
+    "watch": "node --watch --env-file=.env ./api/index.js ",
     "test": "node --test"
   },
   "author": "Raziel Rodrigues",
