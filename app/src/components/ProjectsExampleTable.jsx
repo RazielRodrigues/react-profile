@@ -18,7 +18,7 @@ export default function ProjectsExampleTable() {
 
             try {
 
-                const response = await axios.get('http://localhost:8081/github')
+                const response = await axios.get('https://api.go.razielrodrigues.dev/github')
                 const json = response.data;
 
                 const items = json.map((item) => {
