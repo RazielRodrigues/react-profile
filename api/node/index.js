@@ -12,6 +12,15 @@ const server = http.createServer({}, async (req, res) => {
 
     // 1. GETTING DESIGNS
     let dataDesign = await responseDesign.json();
+
+    if (dataDesign.message !== null) {
+        res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        })
+        res.end(JSON.stringify(dataDesign))
+    }
+    
     dataDesign = dataDesign.items.filter((cv) => cv.title !== 'OLD')
 
     // 2. CREATING EXPORT LINK
@@ -59,4 +68,4 @@ const server = http.createServer({}, async (req, res) => {
 })
 
 server.listen(3001, "localhost")
-console.log("Listening: http://localhost:3081")
+console.log("Listening: http://localhost:3001")
