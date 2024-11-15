@@ -83,5 +83,5 @@ func main() {
 	http.HandleFunc("/github", GithubToApi)
 
 	http.ListenAndServe(":3000", nil)
-	fmt.Println("Listening: https://localhost:3000", nil)
+	fmt.Println("Listening: http://localhost:3000", nil)
 }

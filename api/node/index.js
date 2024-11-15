@@ -58,5 +58,5 @@ const server = http.createServer({}, async (req, res) => {
     res.end(JSON.stringify(resultLinks))
 })
 
-server.listen(8082, "localhost")
-console.log("Listening: http://localhost:8082/")
+server.listen(3001, "localhost")
+console.log("Listening: http://localhost:3081")
