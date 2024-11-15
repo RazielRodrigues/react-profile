@@ -11,8 +11,5 @@
             "src": "/(.*)",
             "dest": "./api/index.js"
         }
-    ],
-    "env": {
-        "CANVA_TOKEN": "@CANVA_TOKEN"
-    }
+    ]
 }
