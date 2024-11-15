@@ -82,6 +82,6 @@ func main() {
 	http.HandleFunc("/devto", DevToApi)
 	http.HandleFunc("/github", GithubToApi)
 
-	http.ListenAndServe(":8081", nil)
-	fmt.Println("Listening: https://localhost:8081", nil)
+	http.ListenAndServe(":3000", nil)
+	fmt.Println("Listening: https://localhost:3000", nil)
 }
