@@ -2,7 +2,7 @@
     "name": "razielrodrigues/api",
     "autoload": {
         "psr-4": {
-            "Razielrodrigues\\Api\\": "src/"
+            "Razielrodrigues\\Api\\": "api/"
         }
     },
     "authors": [

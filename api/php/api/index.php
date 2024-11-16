@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src;
+namespace App\api;
 
 header('Content-Type: application/json');
 
