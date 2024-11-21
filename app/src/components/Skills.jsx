@@ -30,14 +30,14 @@ export default function Skills() {
                                 {/* Backend */}
                                 <tr>
                                     <td className="px-4 py-2 font-medium text-gray-900">Backend</td>
-                                    <td className="px-4 py-2 text-gray-700">PHP (6 years), NodeJS, Go (learning)</td>
+                                    <td className="px-4 py-2 text-gray-700">PHP, NodeJS, Go (learning)</td>
                                 </tr>
 
                                 {/* Frontend */}
                                 <tr>
                                     <td className="px-4 py-2 font-medium text-gray-900">Frontend</td>
                                     <td className="px-4 py-2 text-gray-700">
-                                        HTML, CSS/SASS, JavaScript, jQuery, Bootstrap, StimulusJS, Tailwind CSS
+                                        HTML, CSS/SASS, JavaScript, ReactJS
                                     </td>
                                 </tr>
 
@@ -45,7 +45,7 @@ export default function Skills() {
                                 <tr>
                                     <td className="px-4 py-2 font-medium text-gray-900">Frameworks</td>
                                     <td className="px-4 py-2 text-gray-700">
-                                        Symfony (4 years of real projects), Zend, Laravel, WordPress
+                                        Symfony, Zend, Laravel, WordPress
                                     </td>
                                 </tr>
 
