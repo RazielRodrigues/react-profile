@@ -18,9 +18,9 @@ export default function ProjectsExampleTable() {
 
             try {
 
-                const response = await axios.get('https://api.go.razielrodrigues.dev/github')
+                const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/github`)
                 const json = response.data;
-
+                console.log(json)
                 const items = json.map((item) => {
                     return (
                         <tr key={item.id}>

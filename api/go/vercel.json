@@ -8,7 +8,11 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/github",
+            "dest": "main.go"
+        },
+        {
+            "src": "/devto",
             "dest": "main.go"
         }
     ]

@@ -12,8 +12,7 @@ export default function Article() {
       setError(null)
       
       try {
-
-        const response = await axios.get('https://api.go.razielrodrigues.dev/devto')
+        const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/devto`)
         const json = response.data;
 
         const items = json.map((item) => {

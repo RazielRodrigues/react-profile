@@ -3,6 +3,18 @@ const http = require('node:http')
 const server = http.createServer({}, async (req, res) => {
     const token = process.env.CANVA_TOKEN;
 
+
+    const tokenResponse = await fetch("https://api.canva.com/rest/v1/oauth/token", {
+        method: "POST",
+        headers: {
+            "Authorization": "Basic {credentials}",
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams("grant_type=authorization_code&refresh_token=xxx&client_id=OC-AZLzpxR9SXd1&client_secret=cnvcaIbMrsN8SiRu1DHIXoJnLAq-SETqjDbbhZvgGIG9LJd87a6a3c37"),
+    });
+    let tokenJson = await tokenResponse.json();
+    console.log(tokenJson)
+
     const responseDesign = await fetch("https://api.canva.com/rest/v1/designs", {
         method: "GET",
         headers: {

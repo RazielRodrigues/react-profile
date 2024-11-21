@@ -12,7 +12,7 @@ export default function Resume() {
             setError(null); // Reset any previous errors
 
             try {
-                const response = await axios.get('https://api.node.razielrodrigues.dev');
+                const response = await axios.get(import.meta.env.VITE_NODE_MICROSERVICE);
                 const json = response.data;
 
                 const items = json.map((item, index) => {
