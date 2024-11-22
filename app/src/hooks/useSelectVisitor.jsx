@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import FirebaseConfig from "../firebaseConfig";
+import FirebaseConfig from "../FirebaseConfig";
 import { collection, onSnapshot } from "firebase/firestore";
 
 export default function useSelectVisitor() {

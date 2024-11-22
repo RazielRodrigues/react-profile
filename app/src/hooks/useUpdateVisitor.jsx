@@ -1,5 +1,5 @@
 import { doc, updateDoc, increment, getDoc } from "firebase/firestore";
-import FirebaseConfig from "../firebaseConfig";
+import FirebaseConfig from "../FirebaseConfig";
 
 export default async function useUpdateVisitor() {
     const db = FirebaseConfig();
