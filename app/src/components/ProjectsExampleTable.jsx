@@ -35,7 +35,6 @@ export default function ProjectsExampleTable() {
                                     <a
                                         href={item.demo_url}
                                         target="_blank"
-                                        rel="noopener noreferrer"
                                         className="text-blue-600 hover:underline"
                                     >
                                         Live Demo
@@ -48,7 +47,6 @@ export default function ProjectsExampleTable() {
                                 <a
                                     href={item.html_url}
                                     target="_blank"
-                                    rel="noopener noreferrer"
                                     className="text-blue-600 hover:underline"
                                 >
                                     Repository
