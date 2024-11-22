@@ -16,7 +16,7 @@ export default function ProjectsExample() {
             <div className="overflow-x-auto mt-5 text-left">
 
                 <div className="mt-8 flex flex-wrap justify-center gap-4">
-                    <h2 className="text-sm font-bold text-gray-900 sm:text-sm"><Link to='/project' >See More</Link></h2>
+                    <h2 className="text-sm font-bold text-gray-900 sm:text-sm"><Link to='/project'>See More</Link></h2>
                 </div>
 
             </div>

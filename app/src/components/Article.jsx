@@ -33,7 +33,6 @@ export default function Article() {
           )
         })
 
-        // Set the Table with mapped items
         setTable(items);
       } catch (error) {
         console.error(error);

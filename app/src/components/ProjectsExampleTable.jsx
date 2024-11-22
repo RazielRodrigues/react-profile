@@ -8,7 +8,7 @@ export default function ProjectsExampleTable() {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString(); // Formats the date to a human-readable format
+        return date.toLocaleDateString();
     };
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function ProjectsExampleTable() {
 
                 const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/github`)
                 const json = response.data;
-                console.log(json)
+
                 const items = json.map((item) => {
                     return (
                         <tr key={item.id}>
@@ -59,7 +59,6 @@ export default function ProjectsExampleTable() {
                 });
 
 
-                // Set the Table with mapped items
                 setTable(items);
             } catch (error) {
                 console.error(error);

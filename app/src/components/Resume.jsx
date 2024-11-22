@@ -9,7 +9,7 @@ export default function Resume() {
     useEffect(() => {
         async function loadData() {
             setLoading(true);
-            setError(null); // Reset any previous errors
+            setError(null);
 
             try {
                 const response = await axios.get(import.meta.env.VITE_NODE_MICROSERVICE);
@@ -18,8 +18,7 @@ export default function Resume() {
                 const items = json.map((item, index) => {
                     let type = '';
 
-                    // Assuming item represents the job object
-                    switch (index) { // Use index to determine type, assuming you're mapping based on this
+                    switch (index) {
                         case 0:
                             type = 'English';
                             break;
@@ -51,7 +50,6 @@ export default function Resume() {
                     )
                 });
 
-                // Set the Table with mapped items
                 setTable(items);
             } catch (error) {
                 console.error(error);
@@ -79,22 +77,22 @@ export default function Resume() {
                 <ul>
 
 
-                <table className="w-full min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                    <thead className="ltr:text-left rtl:text-right">
-                        <tr>
-                            <th className="px-4 py-2 font-medium text-gray-900">Name</th>
-                            <th className="px-4 py-2 font-medium text-gray-900">Link</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200">
-                        {error ? (
-                            <tr><td>Error: {error.message}</td></tr>
-                        ) : loading ? (
-                            <tr><td>Loading...</td></tr>
-                        ) : (
-                            table
-                        )}
-                    </tbody>
+                    <table className="w-full min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                        <thead className="ltr:text-left rtl:text-right">
+                            <tr>
+                                <th className="px-4 py-2 font-medium text-gray-900">Name</th>
+                                <th className="px-4 py-2 font-medium text-gray-900">Link</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200">
+                            {error ? (
+                                <tr><td>Error: {error.message}</td></tr>
+                            ) : loading ? (
+                                <tr><td>Loading...</td></tr>
+                            ) : (
+                                table
+                            )}
+                        </tbody>
                     </table>
                 </ul>
 
