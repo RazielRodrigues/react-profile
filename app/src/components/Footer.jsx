@@ -1,7 +1,9 @@
+import useSelectVisitor from '../hooks/useSelectVisitor';
 import photo from './../assets/razielrodrigues.jpeg'
 
 export default function Footer() {
     const year = new Date().getFullYear()
+    const visitors = useSelectVisitor();
 
     return (
         <footer className="bg-white lg:grid lg:grid-cols-5 mt-10">
@@ -77,7 +79,7 @@ export default function Footer() {
                                 </li>
 
                                 <li>
-                                    <p className="text-gray-700 transition hover:opacity-75">Visitors count: 0</p>
+                                    <p className="text-gray-700 transition hover:opacity-75">Visitors count: {visitors.visitor_count}</p>
                                 </li>
 
                             </ul>
