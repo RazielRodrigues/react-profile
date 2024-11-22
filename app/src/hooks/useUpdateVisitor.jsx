@@ -7,7 +7,6 @@ export default async function useUpdateVisitor() {
     const docRef = doc(db, "visitor", docId);
 
     try {
-        document.cookie = 'already-visited'
         if (document.cookie) {
             return;
         }
@@ -22,6 +21,8 @@ export default async function useUpdateVisitor() {
         } else {
             await setDoc(docRef, { visitor_count: 1 });
         }
+
+        document.cookie = 'already-visited'
     } catch (error) {
         console.error("Error updating visitor count:", error);
     }
