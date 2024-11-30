@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import useSelectVisitor from "../hooks/useSelectVisitor";
 import useUpdateVisitor from "../hooks/useUpdateVisitor";
-import cv from '../assets/raziel-rodrigues-cv-php-nodejs-go-en-2024.pdf';
 
 export default function Banner() {
     const visitors = useSelectVisitor();
@@ -24,7 +23,7 @@ export default function Banner() {
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <a
-                    href={cv}
+                    href="https://www.canva.com/design/DAGNTKZBwXs/o3baeLiuMFxgTDDjH1H4OA/edit?utm_content=DAGNTKZBwXs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
                     className="text-sm font-bold text-gray-900 sm:text-sm"
                 >
                     Download Resume
