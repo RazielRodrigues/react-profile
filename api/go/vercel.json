@@ -10,10 +10,6 @@
         {
             "src": "/",
             "dest": "main.go"
-        },
-        {
-            "src": "/devto",
-            "dest": "main.go"
         }
     ]
 }

@@ -12,9 +12,9 @@ export default function Article() {
       setError(null)
       
       try {
-        const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/devto`)
-        const json = response.data;
-
+        const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/`)
+        const json = JSON.parse(response.data.devto);
+console.log(json)
         const items = json.map((item) => {
           return (
             <tr key={item.id}>

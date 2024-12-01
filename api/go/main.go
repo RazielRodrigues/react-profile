@@ -1,4 +1,4 @@
-package handler
+package main
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func DevToApi(w http.ResponseWriter, req *http.Request) {
+func DevToApi() string {
 	type Post struct {
 		Id    int    `json:"id"`
 		Title string `json:"title"`
@@ -34,12 +34,10 @@ func DevToApi(w http.ResponseWriter, req *http.Request) {
 		log.Fatalln(err)
 	}
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
-	io.WriteString(w, string(postsJson))
+	return string(postsJson)
 }
 
-func GithubToApi(w http.ResponseWriter, req *http.Request) {
+func GithubToApi() string {
 	type Repository struct {
 		Id               int    `json:"id"`
 		Name             string `json:"name"`
@@ -72,16 +70,30 @@ func GithubToApi(w http.ResponseWriter, req *http.Request) {
 		log.Fatalln(err)
 	}
 
+	return string(repositoriesJson)
+}
+
+func Api(w http.ResponseWriter, req *http.Request) {
+
+	type Response struct {
+		DevTo  string `json:"devto"`
+		Github string `json:"github"`
+	}
+
+	var response Response
+
+	response.DevTo = DevToApi()
+	response.Github = GithubToApi()
+
+	responseJson, _ := json.Marshal(response)
+
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
-	io.WriteString(w, string(repositoriesJson))
+	io.WriteString(w, string(responseJson))
 }
 
 func main() {
-
-	http.HandleFunc("/devto", DevToApi)
-	http.HandleFunc("/", GithubToApi)
-
+	http.HandleFunc("/", Api)
 	http.ListenAndServe(":3000", nil)
 	fmt.Println("Listening: http://localhost:3000", nil)
 }
