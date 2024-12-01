@@ -18,7 +18,7 @@ export default function ProjectsExampleTable() {
 
             try {
 
-                const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/github`)
+                const response = await axios.get(import.meta.env.VITE_GO_MICROSERVICE + `/`)
                 const json = response.data;
 
                 const items = json.map((item) => {

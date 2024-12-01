@@ -80,7 +80,7 @@ func GithubToApi(w http.ResponseWriter, req *http.Request) {
 func main() {
 
 	http.HandleFunc("/devto", DevToApi)
-	http.HandleFunc("/github", GithubToApi)
+	http.HandleFunc("/", GithubToApi)
 
 	http.ListenAndServe(":3000", nil)
 	fmt.Println("Listening: http://localhost:3000", nil)
